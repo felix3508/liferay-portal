@@ -147,6 +147,56 @@ definition {
 		BlogsEntry.viewDefaultCP(entryTitle = "");
 	}
 
+	@description = "This is a use case for LPS-73393."
+	@priority = "5"
+	test AddBlogsEntryWithAlloyEditorDisabled {
+		var appName = "Liferay Frontend Editor AlloyEditor Web";
+
+		ProductMenu.gotoPortlet(
+			category = "Apps",
+			panel = "Control Panel",
+			portlet = "App Manager");
+
+		Search.searchCP(searchTerm = "Alloy");
+
+		AppManager.deactivateAppCP(appName = "${appName}");
+
+		ProductMenu.gotoPortlet(
+			category = "Apps",
+			panel = "Control Panel",
+			portlet = "App Manager");
+
+		Search.searchCP(searchTerm = "Alloy");
+
+		var key_appName = "${appName}";
+		var key_appStatus = "Resolved";
+
+		AssertTextEquals.assertPartialText(
+			locator1 = "AppManager#APP_STATUS",
+			value1 = "${key_appStatus}");
+
+		Navigator.openURL();
+
+		ProductMenu.gotoPortlet(
+			category = "Content & Data",
+			panel = "Control Panel",
+			portlet = "Blogs");
+
+		BlogsNavigator.gotoAddEntry();
+
+		AssertElementPresent(
+			key_editor = "title",
+			locator1 = "CKEditor#EDITOR");
+
+		AssertElementPresent(
+			key_editor = "subtitle",
+			locator1 = "CKEditor#EDITOR");
+
+		AssertElementPresent(
+			key_editor = "content",
+			locator1 = "CKEditor#EDITOR");
+	}
+
 	@description = "This is a use case for LPS-70143."
 	@priority = "4"
 	test AddBlogsEntryWithDMLink {
