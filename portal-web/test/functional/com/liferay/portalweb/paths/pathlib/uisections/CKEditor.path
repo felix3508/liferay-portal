@@ -9,6 +9,11 @@
 </thead>
 <tbody>
 <tr>
+	<td>EDITOR</td>
+	<td>//iframe[contains(@class,'cke_wysiwyg_frame') and contains(@title,'_${key_editor}')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>BODY_FIELD</td>
 	<td>//div[contains(@id,'cke')]</td>
 	<td></td>
