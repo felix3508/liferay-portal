@@ -230,7 +230,7 @@
 </tr>
 <tr>
 	<td>DELETE_FRAGMENT_COMMENT</td>
-	<td>//button[contains(@class,'fragments-editor')]/span[contains(.,'Delete')]</td>
+	<td>//button[contains(@class,'page-editor')]/span[contains(.,'Delete')]</td>
 	<td></td>
 </tr>
 <tr>
